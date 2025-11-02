@@ -1,35 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Assignment #9: Giphy API</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link href = "./css/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="container my-5">
-      <h1 class="mb-4 text-center">Fetch a Gif</h1>
-      <!-- Stretch: Add search functionality by commenting out the <div> element below -->
+<head>
+  <meta charset="UTF-8">
+  <title>FrameFetch</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Fetch a Gif!</h1>
 
-      <div class="row justify-content-center mb-3">
-        <div class="col-md-6">
-          <input type="text" id="search-input" class="form-control" placeholder="Search for a GIF">
-        </div>
-      </div>
-      
+  <!-- Search Form -->
+  <form method="POST">
+    <input type="text" name="search" placeholder="Enter a keyword" required>
+    <button type="submit">Search</button>
+  </form>
 
-      <!-- <div class="d-flex justify-content-center mb-4">
-        <button id="fetch-gif-btn" class="btn btn-primary">
-          Fetch a GIF
-        </button>
-      </div> -->
 
-      <div id="gif-container" class="row">
-        <!-- Output your gifs here -->
-      </div>
-    </div>
-
-    <script src="./js/script.js"></script>
-  </body>
+  <!-- GIF Results -->
+  <div id="results">
+    {% for gif in gifs %}
+      <img src="{{ gif }}" alt="GIF">
+    {% endfor %}
+  </div>
+</body>
 </html>
